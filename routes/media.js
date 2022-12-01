@@ -8,9 +8,14 @@ const { Media } = require('../models');
 router.get('/', async (req, res) => {
   const media = await Media.findAll();
 
+  const mappedMedia = media.map((m) => {
+    m.image = `${req.get('host')}/${m.image}`;
+    return m;
+  })
+
   return res.json({
     status: 'success',
-    data: media,
+    data: mappedMedia,
   });
 })
 
