@@ -43,6 +43,8 @@ module.exports = async (req, res) => {
 
   const createdUser = await User.create(data);
 
+  console.log(createdUser);
+
   return res.json({
     status: 'success',
     data: {
