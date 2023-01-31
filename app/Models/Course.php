@@ -21,15 +21,23 @@ class Course extends Model
         'mentor_id'
     ];
 
-    public function mentor() {
+    protected $casts = [
+        'created_at' => 'datetime:Y-m-d H:m:s',
+        'updated_at' => 'datetime:Y-m-d H:m:s',
+    ];
+
+    public function mentor()
+    {
         return $this->belongsTo('App\Mentor');
     }
 
-    public function chapters() {
+    public function chapters()
+    {
         return $this->hasMany('App\Chapter')->orderBy('id', 'ASC');
     }
 
-    public function images() {
+    public function images()
+    {
         return $this->hasMany('App\ImageCourse')->orderBy('id', 'DESC');
     }
 }
