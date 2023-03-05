@@ -11,6 +11,8 @@ module.exports = async (req, res) => {
     return res.json(media.data);
   } catch (error) {
 
+    console.log(error);
+
     if (error.code === "ECONNREFUSED") {
       return res.status(500).json({
         status: 'error',
